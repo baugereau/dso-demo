@@ -38,6 +38,13 @@ pipeline {
             }
           }
         }
+	stage('OCI Image BnP'){
+	  steps {
+	    container('kaniko') {
+	      sh '/kaniko/executor -f $(pwd)/Dockerfile -d $(pwd) --insecure --skip-tls-verify --cache=true --destination=docker.io/baugereau/dso-demo'
+	    }
+	  }
+	}
       }
     }
 
