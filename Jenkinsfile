@@ -101,6 +101,25 @@ pipeline {
       }
     }
 
+    stage('Image Analysis') {
+      parallel {
+        stage('Image Linting') {
+          steps {
+	    container('docker-tools') {
+	      sh 'dockle docker.io/baugereau/dso-demo:multistage'
+	    }
+          }
+        }
+        stage('Image Scan') {
+	  steps {
+	    container('docker-tools') {
+	      sh 'trivy image baugereau/dso-demo:multistage'
+	    }
+	  }
+        }
+      }
+    }
+
     stage('Deploy to Dev') {
       steps {
         // TODO
