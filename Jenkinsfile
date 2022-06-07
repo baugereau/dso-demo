@@ -106,14 +106,14 @@ pipeline {
         stage('Image Linting') {
           steps {
 	    container('docker-tools') {
-	      sh 'dockle docker.io/baugereau/dso-demo:multistage'
+	      sh 'dockle docker.io/baugereau/dso-demo'
 	    }
           }
         }
         stage('Image Scan') {
 	  steps {
 	    container('docker-tools') {
-	      sh 'trivy image baugereau/dso-demo:multistage'
+	      sh 'trivy image baugereau/dso-demo'
 	    }
 	  }
         }
