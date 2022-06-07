@@ -40,21 +40,21 @@
   - :who: 
     :why: 
     :versions: []
-    :when: 2022-06-07
+    :when: 2022-06-07 00:00:00.000000000 Z
 - - :approve
   - logback-core
   - :who: 
     :why: 
     :versions:
     - 1.2.6
-    :when: 2022-06-07
+    :when: 2022-06-07 00:00:00.000000000 Z
 - - :approve
   - logback-classic
   - :who: 
     :why: 
     :versions:
     - 1.2.6
-    :when: 2022-06-07
+    :when: 2022-06-07 00:00:00.000000000 Z
 - - :approve
   - jakarta.xml.bind-api
   - :who: 
