@@ -124,13 +124,13 @@ pipeline {
       }
     }
 
-    stage('Scan k8s deploy code') {
-      steps {
-        container('docker-tools') {
-          sh 'kubesec scan deploy/dso-demo-deploy.yaml'
-        }
-      }
-    }
+//    stage('Scan k8s deploy code') {
+//      steps {
+//        container('docker-tools') {
+//          sh 'kubesec scan deploy/dso-demo-deploy.yaml'
+//        }
+//      }
+//    }
 
     stage('Deploy to Dev') {
       environment {
