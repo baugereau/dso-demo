@@ -27,7 +27,6 @@ spec:
             drop:
               - ALL
           priviledge: false
-          allowPriviledgeEscalation: false
           runAsNonRoot: true
           readOnlyRootFilesystem: true
           runAsUser: 1000
