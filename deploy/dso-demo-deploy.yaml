@@ -17,12 +17,13 @@ spec:
       labels:
         app: dso-demo
     spec:
+      automountServiceAccountToken: false
+      serviceAccountName: dso-demo
       containers:
       - image: baugereau/dso-demo
         name: dso-demo
         ports:
         - containerPort: 8080
-        securityContext:
           capabilities:
             drop:
               - ALL
