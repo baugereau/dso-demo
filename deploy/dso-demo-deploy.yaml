@@ -5,6 +5,7 @@ metadata:
   labels:
     app: dso-demo
   name: dso-demo
+  namespace: dev
 spec:
   replicas: 1
   selector:
@@ -16,8 +17,15 @@ spec:
       creationTimestamp: null
       labels:
         app: dso-demo
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'dso-demo'
+        vault.hashicorp.com/agent-inject-secret-database: 'secret/dso-demo/database'
+        vault.hashicorp.com/agent-inject-template-database: |
+          {{- with secret "secret/dso-demo/database" -}}
+              mysql -u {{ .Data.data.username }} -p {{ .Data.data.password }} -h database:3306 mydb
+          {{- end -}}
     spec:
-      automountServiceAccountToken: false
       serviceAccountName: dso-demo
       containers:
       - image: baugereau/dso-demo
